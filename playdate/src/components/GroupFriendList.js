@@ -1,6 +1,6 @@
 const GroupFriendList = () => {
     return (
-      <div style={{"background-color":'red', float: "left", width: '30%', height: '100vh', 'overflow-y': 'scroll'}}>
+      <div style={{"backgroundColor":'red', float: "left", width: '30%', height: '100vh', 'overflowY': 'scroll'}}>
           <h1>Friend Groups</h1>
           <ul>
               <li>test</li>

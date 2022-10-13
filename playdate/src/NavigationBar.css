@@ -1,10 +1,10 @@
 .navBar{
-    background-color: aqua;
+    background-color: #2a84d8
+    ;
     height: 100px;
     display: flex;
   	justify-content: center;
   	align-items: center;
-    border-radius: 10px;
 }
 
 .groupsButton{
@@ -13,6 +13,9 @@
     font-size: 40px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #5ad56a;
+    border: solid;
+
 }
 
 .friendsButton{
@@ -21,6 +24,8 @@
     font-size: 40px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #5ad56a;
+    border: solid;
 }
 
 .myAvailButton{
@@ -29,6 +34,9 @@
     font-size: 40px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #5ad56a;
+    border: solid;
+
 }
 
 .signOutButton{
@@ -37,4 +45,7 @@
     font-size: 40px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #5ad56a;
+    border: solid;
+
 }
