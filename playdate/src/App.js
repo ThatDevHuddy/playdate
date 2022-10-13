@@ -7,8 +7,9 @@ import './NavigationBar.css';
 import FriendGroupList from './components/FriendGroupList'
 import Friends from './components/Friends'
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {auth} from './firebase'
+import {auth,db} from './firebase'
 import {signOut} from 'firebase/auth';
+import {doc,getDoc,setDoc, collection, addDoc, updateDoc, deleteDoc} from 'firebase/firestore';
 
 function App() {
   const [signIn, setSignIn] = useState(true);
@@ -18,6 +19,8 @@ function App() {
 
   const [user] = useAuthState(auth);
   
+  
+
   const logOut = () => {
     signOut(auth)
     
@@ -33,6 +36,7 @@ function App() {
 
   }
   const goToFriends = () => {
+    console.log(user);
     setFriends(true);
     setMyAvail(false);
     setGroup(false);
@@ -44,11 +48,7 @@ function App() {
     setFriends(false);
 
   }
-  const signedIn = () => {
-    
-    goToGroups();
-  }  
-
+  
   return (
     
     <div className="App">
@@ -60,7 +60,7 @@ function App() {
         <button onClick={logOut} className="signOutButton">Sign Out</button>
       </div>
 }
-      {!user && <SignInPage done={signedIn}/>}
+      {!user && <SignInPage />}
       {group && <FriendGroupList />}
       {myAvail && <MyAvailability />}
       {friends && <Friends />}
