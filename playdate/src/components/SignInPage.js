@@ -31,9 +31,9 @@ const Signin = ({ done }) => {
 
  
   return (
-    <div  style={{"background-color":'green'}}>
+    <div style={{'backgroundColor':'green', height: '100vh', width: '100%'}}>
         <h1>Sign In</h1>
-        <button onClick={() => googleSignIn()}>Login with google 🥱</button>
+        <button onClick={() => googleSignIn()}>Login With Google</button>
       
     </div>
   )
