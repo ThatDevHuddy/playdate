@@ -20,7 +20,7 @@ document.body.onmouseup = function() {
     const Dragging = (e, index) => {
       if(mouseDown == 1){
         dayarray[index] = !dayarray[index];
-        console.log("bruh");
+        
         if(selector){
           e.target.style.backgroundColor = '#00FF00';
           }

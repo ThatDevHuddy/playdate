@@ -16,7 +16,8 @@ function App() {
   const [group, setGroup] = useState(false); //define state
   const [myAvail, setMyAvail] = useState(false);
   const [friends, setFriends] = useState(false);
-
+  const [friendGroup, setFriendGroup] = useState(false);
+  const [selectedGroup, setSelectedGroup] = useState("");
   const [user] = useAuthState(auth);
   
   if(user != null){
@@ -43,26 +44,35 @@ async function cheese(){
     setFriends(false);
     setMyAvail(false);
     setGroup(false);
+    setFriendGroup(false);
   }
 
   const goToGroups = () => {
     setGroup(true);
     setMyAvail(false);
     setFriends(false);
-
+    setFriendGroup(false);
   }
   const goToFriends = () => {
     console.log(user);
     setFriends(true);
     setMyAvail(false);
     setGroup(false);
-
+    setFriendGroup(false);
   }
   const goToMyAvail = () => {
     setMyAvail(true);
     setGroup(false);
     setFriends(false);
+    setFriendGroup(false);
+  }
+  const clickedGroup = (code) =>{
+    setMyAvail(false);
+    setGroup(false);
+    setFriends(false);
+    setFriendGroup(true);
 
+    setSelectedGroup(code)
   }
   
   return (
@@ -77,10 +87,10 @@ async function cheese(){
       </div>
 }
       {!user && <SignInPage />}
-      {group && <FriendGroupList />}
+      {group && <FriendGroupList clickedGroup = {clickedGroup}/>}
       {myAvail && <MyAvailability />}
       {friends && <Friends />}
-      
+      {friendGroup && <Group code={selectedGroup}/>}
       
     </div>
   );
