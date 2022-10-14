@@ -9,7 +9,7 @@ import Friends from './components/Friends'
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {auth,db} from './firebase'
 import {signOut} from 'firebase/auth';
-import {doc,getDoc,setDoc, collection, addDoc, updateDoc, deleteDoc} from 'firebase/firestore';
+import {doc,getDoc,setDoc} from 'firebase/firestore';
 
 function App() {
   const [signIn, setSignIn] = useState(true);
