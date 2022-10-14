@@ -19,7 +19,23 @@ function App() {
 
   const [user] = useAuthState(auth);
   
-  
+  if(user != null){
+    cheese();
+}
+async function cheese(){
+  console.log('here');
+  const docRef = doc(db, "users", user.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists()) {
+    var ref = doc(db,'users', user.uid)
+  await setDoc(ref, {
+    name: user.displayName
+  });
+// doc.data() will be undefined in this case
+  console.log("No such document!");
+}
+}
 
   const logOut = () => {
     signOut(auth)

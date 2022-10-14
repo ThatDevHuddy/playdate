@@ -1,16 +1,28 @@
-import {db} from '../firebase.js';
+import {auth,db} from '../firebase'
+import {useAuthState} from 'react-firebase-hooks/auth';
 import {doc,getDoc,setDoc, collection, addDoc, updateDoc, deleteDoc} from 'firebase/firestore';
 const FriendGroupList = () => {
-  async function adding(){
-    var ref = doc(db,'groups', 'fg1')
+  const [user] = useAuthState(auth);
+  async function addGroup(){
+    var ref = doc(db,'groups', 'code')
     await setDoc(ref, {
-      name:'balls'
+      name:'balls',
+      code: 'code'
+    });
+    joinGroup();
+  }
+
+  async function joinGroup(){
+    var ref = doc(db,'groups', 'code', 'users',user.uid)
+    await setDoc(ref, {
+      user: user.displayName,
+      uid: user.uid
     });
   }
   return (
     <div>
         <ul>
-            <li onClick = {adding}>FG 1</li>
+            <li onClick = {addGroup}>FG 1</li>
             <li>FG 2</li>
         </ul>
     </div>

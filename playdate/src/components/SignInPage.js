@@ -12,22 +12,7 @@ const Signin = ({ done }) => {
     return signInWithPopup(auth, provider)
     
   }
-  if(user != null){
-      cheese();
-  }
-  async function cheese(){
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(docRef);
-
-    if (!docSnap.exists()) {
-      var ref = doc(db,'users', user.uid)
-    await setDoc(ref, {
-      name: user.displayName
-    });
-  // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
-  }
+ 
 
  
   return (
