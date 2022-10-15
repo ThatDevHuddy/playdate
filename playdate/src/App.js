@@ -87,7 +87,7 @@ async function cheese(){
       </div>
 }
       {!user && <SignInPage />}
-      {group && <FriendGroupList clickedGroup = {clickedGroup}/>}
+      {group && <FriendGroupList turnedOn = {group} clickedGroup = {clickedGroup}/>}
       {myAvail && <MyAvailability />}
       {friends && <Friends />}
       {friendGroup && <Group code={selectedGroup}/>}

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import {auth,db} from '../firebase'
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {doc,getDoc,setDoc, collection, addDoc, updateDoc, deleteDoc} from 'firebase/firestore';
@@ -6,18 +6,27 @@ const FriendGroupList = ({clickedGroup}) => {
   const[newGroupName, setNewGroupName] = useState("");
   const [joinGroupCode, setJoinGroupCode] = useState("");
   const [groupArray, setGroupArray] = useState([]);
+  
 
-  setInterval(updateArr,100);
+  
   async function updateArr(){
+    console.log('updating')
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     if(docSnap.get('groups') != null){
     if(docSnap.get('groups').length > 0 && docSnap.get('groups') != groupArray){
       
     setGroupArray(docSnap.get('groups')); // do name
+   
     }
   }
-  }
+}
+useEffect(() => {
+  updateArr();
+}, []);
+ 
+ 
+
 // HOW TO DO SELECTING (INSIDE OF GROUPARRAY also get doc to get the name of group and store in dict and show that in the .map. when one of them clicked get the code of that one and call a function in app that updates a prop on group with the rigth code and then turns grouplist off and group on. group gets doc and shows the name or)
   function makeid(length) {
     var result           = '';
@@ -40,6 +49,7 @@ const FriendGroupList = ({clickedGroup}) => {
       code: newCode
     });
     joinGroup(newCode);
+    updateArr();
   }
 
   async function joinGroup(code){
