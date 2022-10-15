@@ -1,8 +1,11 @@
+import Day from './Day'
 
-
-const Week = () => {
+const Week = ({data, selector}) => {
   return (
-    <div>Week</div>
+    <div style = {{margin:'2px', backgroundColor:'green'}}>
+    <Day  selector = {selector}/>
+  
+    </div>
   )
 }
 
