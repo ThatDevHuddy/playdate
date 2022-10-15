@@ -21,9 +21,9 @@ function App() {
   const [user] = useAuthState(auth);
   
   if(user != null){
-    cheese();
+    init();
 }
-async function cheese(){
+async function init(){
   console.log('here');
   const docRef = doc(db, "users", user.uid);
   const docSnap = await getDoc(docRef);
