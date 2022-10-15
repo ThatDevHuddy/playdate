@@ -1,9 +1,8 @@
-import {useState} from 'react'
+
+
 
 const Day = ({ selector }) => {
-     let dayarray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-      const [mouseDown, setMouseDown] = useState(0);
-   
+    let dayarray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     const toggleHour = (e, index) => {
         dayarray[index] = !dayarray[index];
         if(selector){
@@ -14,15 +13,13 @@ const Day = ({ selector }) => {
         }
         console.log(dayarray[index])
     }
-    
-    
+    var mouseDown = 0;
 document.body.onmousedown = function() { 
-    setMouseDown(1);
+    mouseDown = 1;
     console.log(mouseDown);
 }
 document.body.onmouseup = function() {
-    setMouseDown(0)
-     console.log(mouseDown);
+    mouseDown = 0; console.log(mouseDown);
 }
     const Dragging = (e, index) => {
       console.log('enter')

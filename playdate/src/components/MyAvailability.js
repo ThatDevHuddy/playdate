@@ -39,7 +39,9 @@ const MyAvailability = () => {
         <button onClick={setPaintAvailable}>Paint Available</button>
         <div>
         {myAvail.map((week) => (
-              <Week selector = {selector} data = {week} />
+       
+              <Week selector = {selector} data = "hi" />
+             
             ))}
       <Week data = 'hi' selector = {selector}/>
       </div>
