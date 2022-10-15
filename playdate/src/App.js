@@ -23,6 +23,7 @@ function App() {
   if(user != null){
     init();
 }
+let empty = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 async function init(){
   console.log('here');
   const docRef = doc(db, "users", user.uid);
@@ -31,7 +32,8 @@ async function init(){
   if (!docSnap.exists()) {
     var ref = doc(db,'users', user.uid)
   await setDoc(ref, {
-    name: user.displayName
+    name: user.displayName,
+    availability: [{index:0,start:'10/16','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}, {index:0,start:'10/23','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}, {index:0,start:'10/30','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}]
   });
 // doc.data() will be undefined in this case
   console.log("No such document!");
