@@ -29,6 +29,7 @@ const MyAvailability = () => {
     
   }
   
+  
   useEffect(() => {
     init();
   }, []);
@@ -40,7 +41,7 @@ const MyAvailability = () => {
         <div>
         {myAvail.map((week) => (
        
-              <Week selector = {selector} data = "hi" />
+              <Week selector = {selector} data = {week} />
              
             ))}
       <Week data = 'hi' selector = {selector}/>

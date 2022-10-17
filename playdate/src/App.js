@@ -50,6 +50,7 @@ async function init(){
   }
 
   const goToGroups = () => {
+    console.log(user);
     setGroup(true);
     setMyAvail(false);
     setFriends(false);
@@ -86,6 +87,7 @@ async function init(){
         <button onClick={goToFriends} className="friendsButton">Friends</button>
         <button onClick={goToMyAvail} className="myAvailButton">My Availability</button>
         <button onClick={logOut} className="signOutButton">Sign Out</button>
+        <img src = {user.photoURL}></img>
       </div>
 }
       {!user && <SignInPage />}
@@ -93,6 +95,7 @@ async function init(){
       {myAvail && <MyAvailability />}
       {friends && <Friends />}
       {friendGroup && <Group code={selectedGroup}/>}
+      
       
     </div>
   );

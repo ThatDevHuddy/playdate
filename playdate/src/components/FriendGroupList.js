@@ -57,10 +57,13 @@ useEffect(() => {
     const codeSnap = await getDoc(codes);
     console.log(codeSnap.get('name'));
     if(codeSnap.exists()){
+      const doccRef = doc(db, "users", user.uid);
+        const doccSnap = await getDoc(doccRef);
         var ref = doc(db,'groups', code, 'users',user.uid)
         await setDoc(ref, {
           name: user.displayName,
-          uid: user.uid
+          uid: user.uid,
+          availability: doccSnap.get('availability')
         });
 
         //updating in user document
