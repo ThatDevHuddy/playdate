@@ -1,63 +1,15 @@
-const GroupFriendList = () => {
+const GroupFriendList = ({friends, showFriend}) => {
+  console.log(friends);
+
     return (
       <div style={{"backgroundColor":'red', float: "left", width: '30%', height: '100vh', 'overflowY': 'scroll'}}>
           <h1>Friend Groups</h1>
-          <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              
-          </ul>
+          {friends.map((friend,index) => (
+                <div style={{'cursor': 'pointer'}} onClick={() => showFriend(friend)}>
+                    
+                {friend.name}
+                </div>
+            ))}
       </div>
     )
   }

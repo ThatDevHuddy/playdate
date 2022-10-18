@@ -17,25 +17,7 @@ const Day = ({ selector, day, place }) => {
     console.log(dayArray);
   }
 
-  var mouseDown = 0;
-  document.body.onmousedown = function () {
-    mouseDown = 1;
-    console.log(mouseDown);
-  }
-  document.body.onmouseup = function () {
-    mouseDown = 0; console.log(mouseDown);
-  }
-  const Dragging = (e, index) => {
-    console.log('enter')
-    if (mouseDown == 1) {
-      console.log('here')
-      var temp = [...dayArray];
-      temp[index] = selector;
-      setDayArray(temp);
-      dayChanged();
-
-    }
-  }
+  
 
   useEffect(() => {
     init();
@@ -92,10 +74,10 @@ const Day = ({ selector, day, place }) => {
       <h4>{day}</h4>
       {dayArray.map((tf, index) => (
 
-        <div style={{ display: 'inline-block' }}>
-          {!tf && <div key={index} onMouseEnter={(e) => Dragging(e, index)} onMouseDown={(e) => toggleHour(e, index)} style={{ display: 'inline-block', 'backgroundColor': 'white', height: '30px', width: '30px', border: '2px solid black', margin: '2px' }}>
+        <div style={{ display: 'inline-block', marginTop:'-20px'}}>
+          {!tf && <div key={index} onMouseDown={(e) => toggleHour(e, index)} style={{ display: 'inline-block', 'backgroundColor': 'white', height: '30px', width: '30px', border: '2px solid black', margin: '2px' }}>
           </div>}
-          {tf && <div key={index} onMouseEnter={(e) => Dragging(e, index)} onMouseDown={(e) => toggleHour(e, index)} style={{ display: 'inline-block', 'backgroundColor': 'green', height: '30px', width: '30px', border: '2px solid black', margin: '2px' }}>
+          {tf && <div key={index} onClick={(e) => toggleHour(e, index)} style={{ display: 'inline-block', 'backgroundColor': 'green', height: '30px', width: '30px', border: '2px solid black', margin: '2px' }}>
           </div>}
 
         </div>

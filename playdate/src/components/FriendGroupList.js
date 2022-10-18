@@ -100,7 +100,7 @@ useEffect(() => {
   return (
     <div>
         {groupArray.map((group,index) => (
-                <div onClick = {() => clickedGroup(group.code)}>
+                <div style={{'cursor': 'pointer'}} onClick = {() => clickedGroup(group.code)}>
                     
                 {group.name}
                 </div>

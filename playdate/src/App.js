@@ -31,15 +31,29 @@ async function init(){
 
   if (!docSnap.exists()) {
     var ref = doc(db,'users', user.uid)
-  await setDoc(ref, {
-    name: user.displayName,
-    availability: [{index:0,start:'10/16','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}, {index:0,start:'10/23','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}, {index:0,start:'10/30','Sun':empty, 'Mon':empty, 'Tue':empty, 'Wed':empty, 'Thu':empty, 'Fri':empty, 'Sat':empty}]
-  });
+    await setDoc(ref, {
+      name: user.displayName,
+      availability: genDefault()
+    });
 // doc.data() will be undefined in this case
   console.log("No such document!");
 }
 }
-
+  const genDefault = () => {
+    let arr = [];
+    const today = new Date();
+  const first = today.getDate() - today.getDay() + 1;
+  const last = first + 6;
+  const sunday = new Date(today.setDate(last));
+  
+console.log(sunday.getMonth()+1 + "/" + sunday.getDate());
+    
+    for(let i = 0; i < 12; i++){
+      arr.push({index:i,start:(sunday.getMonth()+1 + "/" + sunday.getDate()),Sun:empty, Mon:empty, Tue:empty, Wed:empty, Thu:empty, Fri:empty, Sat:empty})
+      sunday.setDate(sunday.getDate()+7)
+    }
+    return arr;
+  } 
   const logOut = () => {
     signOut(auth)
     
@@ -57,6 +71,7 @@ async function init(){
     setFriendGroup(false);
   }
   const goToFriends = () => {
+    
     console.log(user);
     setFriends(true);
     setMyAvail(false);

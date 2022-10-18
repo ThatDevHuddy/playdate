@@ -38,11 +38,11 @@ const MyAvailability = () => {
         <h1>Set Your Availibility</h1>
         <button onClick={setPaintUnavailable}>Paint Unavailable</button>
         <button onClick={setPaintAvailable}>Paint Available</button>
-        <div>
+        <div style = {{height: '750px', overflow: 'scroll', scrollSnapType: 'y mandatory'}}>
         {myAvail.map((week) => (
-       
-              <Week selector = {selector} data = {week} />
-             
+            <div  style = {{scrollSnapAlign: 'center', scrollSnapStop: 'always'}}>
+              <Week selector = {selector} data = {week}/>
+             </div>
             ))}
       <Week data = 'hi' selector = {selector}/>
       </div>
