@@ -45,7 +45,7 @@ const Group = ({code}) => {
       <button onClick={showGroupAvail}>group availability</button>
         <GroupFriendList  friends = {friends} showFriend = {showFriend}/>
         {showing.name != null && <Friend deets = {showing}/>}
-        {showing.name == null && <GroupAvailability />}
+        {showing.name == null && <GroupAvailability code = {code} />}
     </div>
   )
 }
