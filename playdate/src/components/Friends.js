@@ -49,6 +49,7 @@ const Friends = () => {
           });
         }
       }
+      
       else{
         await updateDoc(ref, {
           friends: [friendUID]
